@@ -1,0 +1,198 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"lib",
+				"libantlr"
+			],
+			[
+				"G",
+				"G"
+			],
+			[
+				"I",
+				"I"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"command_palette":
+	{
+		"height": 367.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Build: Clean"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/pavel_pro/Dropbox/Projects/pger/lib/libantlr3c.la",
+		"/Users/pavel_pro/Dropbox/Projects/pger/anlr/GerberLexer.c",
+		"/Users/pavel_pro/Dropbox/Projects/pger/include/antlr/antlr3defs.h",
+		"/Users/pavel_pro/Dropbox/Projects/pger/tools/Makefile.mk",
+		"/Users/pavel_pro/Dropbox/Projects/pger/tools/libantlr3c-3.4/Makefile.mk",
+		"/Users/pavel_pro/Dropbox/Projects/pger/gerber_spec.y",
+		"/Users/pavel_pro/Dropbox/Projects/pger/lex.l",
+		"/Users/pavel_pro/Dropbox/Projects/pger/parser_fsm.h",
+		"/Users/pavel_pro/Dropbox/Projects/pger/samples/sample2.grb",
+		"/Users/pavel_pro/Dropbox/Projects/pger/tools/libantlr3c-3.4/Makefile",
+		"/Users/pavel_pro/Dropbox/Projects/pger/anlr/GerberLexer.h",
+		"/Users/pavel_pro/Dropbox/Projects/pger/anlr/Gerber.g",
+		"/Users/pavel_pro/Dropbox/Projects/pger/grammar_fsm.c",
+		"/Users/pavel_pro/Dropbox/Projects/pger/grammar_fsm.h",
+		"/Users/pavel_pro/Dropbox/Projects/pger/pger_test.c",
+		"/Users/pavel_pro/Dropbox/Projects/pger/pger.c",
+		"/Users/pavel_pro/Dropbox/Projects/pger/lex.yy.d",
+		"/Users/pavel_pro/Dropbox/Projects/pger/pger_test.d",
+		"/Users/pavel_pro/Dropbox/Projects/pger/gerber_spec.tab.c",
+		"/Users/pavel_pro/Dropbox/Projects/pger/samples/sample3.grb",
+		"/Users/pavel_pro/Dropbox/Projects/pger/examples/sample2.grb",
+		"/Users/pavel_pro/Dropbox/Projects/pger/examples/sample3.grb",
+		"/Users/pavel_pro/Dropbox/Projects/pger/examples/sample1.grb",
+		"/Users/pavel_pro/Dropbox/Projects/pger/Makefile",
+		"/Users/pavel_pro/Dropbox/Projects/pger/build/Makefile",
+		"/Users/pavel_pro/Dropbox/Projects/pger/build/compile.mk",
+		"/Users/pavel_pro/Dropbox/Projects/pger/gerber_spec.tab.h"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"GerberLexerNew",
+			"pGerberLexerNew",
+			"_pGerberLexerNew",
+			"pGerberLexerNew",
+			"_pGerberLexerNew",
+			"pGerberParser",
+			"expr",
+			"expr'",
+			"expr",
+			"parse",
+			"GerberParser_Ctx_struct",
+			"pGerberParser",
+			"GerberParserNew",
+			"yylex",
+			"yyparse (",
+			"yyparse",
+			"yyparse(",
+			"parse",
+			"main"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 179.0,
+	"status_bar_visible": true
+}

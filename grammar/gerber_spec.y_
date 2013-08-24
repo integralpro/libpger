@@ -1,0 +1,66 @@
+%{
+#include <stdio.h>
+#include <string.h>
+
+void yyerror(const char *str)
+{
+    fprintf(stderr, "Error: %s\n", str);
+}
+
+int yywrap()
+{
+    return 1;
+}
+
+int main() {
+	yyparse();
+}
+
+%}
+
+%token NUMBER EOB STATEMENT_MARKER X Y I J LITERAL
+%token D01 D02 D03 DXX G01 G02 G03 G04 G36 G37 G74 G75 M02
+
+%%
+statements:
+		statement
+		|
+		statements statement
+		;
+
+statement:
+		data_block EOB
+		|
+		STATEMENT_MARKER parameters
+        ;
+
+parameters:
+		parameter
+		|
+		parameters parameter
+		|
+		STATEMENT_MARKER
+		;
+
+parameter:
+		D01
+		;
+
+data_block:
+		|
+		G04 comment
+		;
+
+comment:
+		print
+		|
+		comment print
+		;
+
+print:
+		LITERAL
+		|
+		NUMBER
+		;
+
+%%

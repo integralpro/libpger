@@ -1,0 +1,57 @@
+%{
+#include <stdio.h>
+#include "gerber_spec.tab.h"
+
+extern int lex_debug;
+void dlog(const char *token) {
+	if(lex_debug) {
+		printf("%s", token);
+	}
+}
+
+extern void unsupported_handler(const char *op);
+
+%}
+
+%%
+\*                    	dlog("EOB\n"); return EOB;
+%						dlog("STATEMENT_MARKER\n"); return STATEMENT_MARKER;
+,                    	dlog("COMMA "); return COMMA;
+
+D(1|01) 				dlog("OP_INTERPOLATE "); return D01;
+D(2|02) 				dlog("OP_MOVE "); return D02;
+D(3|03) 				dlog("OP_FLASH "); return D03;
+D[1-9][0-9]+ 			dlog("OP_SET_AP "); return DXX;
+
+G(1|01) 				dlog("OP_INTER_LINEAR "); return G01;
+G(2|02) 				dlog("OP_INTER_CLOCK "); return G02;
+G(3|03) 				dlog("OP_INTER_COUNTER "); return G03;
+G(4|04) 				dlog("OP_COMMENT "); return G04;
+G36 					dlog("OP_REGION_ON "); return G36;
+G37 					dlog("OP_REGION_OFF "); return G37;
+G74 					dlog("OP_QUADRANT_SINGLE "); return G74;
+G75 					dlog("OP_QUADRANT_MULTI "); return G75;
+
+M(2|02) 				dlog("OP_END "); return M02;
+
+[DGM]([0-9]+)			{ unsupported_handler(yytext); return 0; }
+
+X						dlog("X "); return X;
+Y						dlog("Y "); return Y;
+I						dlog("I "); return I;
+J						dlog("J "); return J;
+
+FS(L|T)(A|I)			dlog("FS "); return FS;
+MO(IN|MM)				dlog("MO "); return MO;
+IP(POS|NEG)				dlog("IP "); return IP;
+IN 						dlog("IN "); return IN;
+AD 						dlog("AD "); return AD;
+
+[-+]?[0-9]+(\.[0-9]+)?  dlog("NUMBER "); return NUMBER;
+([[:print:]])   		dlog("LITERAL "); return LITERAL;
+
+\n                      
+[ \t]+
+
+.						{ printf("Incorrect input: %s\n", yytext); }
+%%
