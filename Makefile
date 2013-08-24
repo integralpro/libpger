@@ -46,7 +46,7 @@ $(TARGET): $(LIBPGER) $(OBJS)
 #-----------------------------------------
 
 $(LIBPGER)_clean:
-	$(RM) lib$(LIBPGER).so $(LIBPGER_OBJS) $(LIBPGER_OBJS:.o=.d)
+	$(RM) $(LIBPGER) $(LIBPGER_OBJS) $(LIBPGER_OBJS:.o=.d)
 
 $(TARGET)_clean:
 	$(RM) $(TARGET) $(OBJS) $(OBJS:.o=.d)
