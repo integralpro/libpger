@@ -20,7 +20,7 @@ ANTLR_DIR=antlr
 ANTLR=$(ANTLR_DIR)/GerberLexer.c $(ANTLR_DIR)/GerberParser.c
 
 LIBPGER=libpger.so
-LIBPGER_SRCS=pger.c $(ANTLR)
+LIBPGER_SRCS=$(ANTLR) pger.c
 LIBPGER_OBJS=$(LIBPGER_SRCS:.c=.o)
 
 COMMON_FLAGS=
@@ -41,7 +41,7 @@ $(LIBPGER): $(LIBPGER_OBJS)
 	$(CC) $(COMMON_FLAGS) $(LDFLAGS) -shared -o $@ $(LIBPGER_OBJS) -lantlr3c
 
 $(TARGET): $(LIBPGER) $(OBJS)
-	$(CC) $(COMMON_FLAGS) $(LDFLAGS) -o $@ $(OBJS) -L. $(LIBPGER) -lantlr3c
+	$(CC) $(COMMON_FLAGS) $(LDFLAGS) -o $@ $(OBJS) -L. $(LIBPGER)
 
 #-----------------------------------------
 
@@ -52,7 +52,7 @@ $(TARGET)_clean:
 	$(RM) $(TARGET) $(OBJS) $(OBJS:.o=.d)
 
 ANTLR_clean:
-	$(RM) $(ANTLR) $(ANTLR:.c=.h) $(ANTLR:.c=.d) $(ANTLR_DIR)/GerberLexer.tokens
+	$(RM) $(ANTLR) $(ANTLR:.c=.h) $(ANTLR:.c=.d) GerberLexer.tokens
 
 #-----------------------------------------
 

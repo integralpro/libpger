@@ -108,13 +108,43 @@ ln          :   LN string {
                 }
             ;
 
-data_block  :   op | g04 | G36 | G37 | G74 | G75 | DXX
+data_block  :   op | g04
+            |   g=(G36 | G37 | G74 | G75) { pger_func_g(atoi(&$g.text->chars[1])); }
+            |   d=DXX { pger_func_d(atoi(&$d.text->chars[1])); }
             ;
 
 g04         :   G04 string { pger_comment($string.text->chars); }
             ;
 
-op          :   (G01|G02|G03)? ('X' NUMBER)? ('Y' NUMBER)? ('I' NUMBER)? ('J' NUMBER)? (D01|D02|D03)?
+op          :   inter=(G01|G02|G03)?
+                ('X' x=NUMBER)?
+                ('Y' y=NUMBER)?
+                ('I' i=NUMBER)?
+                ('J' j=NUMBER)?
+                oper=(D01|D02|D03)? {
+                    int d_code = 0;
+                    if($inter != 0) {
+                        int val = atoi(&$inter.text->chars[1]);
+                        pger_op_interpolation(OP_INTER_LIN + val - 1);
+                    }
+                    if($x != 0) {
+                        pger_op_x(atof($x.text->chars));
+                    }
+                    if($y != 0) {
+                        pger_op_y(atof($y.text->chars));
+                    }
+                    if($i != 0) {
+                        pger_op_i(atof($i.text->chars));
+                    }
+                    if($j != 0) {
+                        pger_op_j(atof($j.text->chars));
+                    }
+
+                    if($oper != 0) {
+                        d_code = atoi(&$oper.text->chars[1]);
+                    }
+                    pger_op_code(d_code);
+                }
             ;
 
 string
@@ -152,7 +182,7 @@ FS      :   'FS';
 MO      :   'MO';
 IP      :   'IP';
 IN      :   'IN';
-AD      :	'AD';
+AD      :   'AD';
 AM      :   'AM';
 SR      :   'SR';
 LP      :   'LP';

@@ -7,31 +7,31 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <pger.h>
-#include "antlr/GerberLexer.h"
-#include "antlr/GerberParser.h"
+
+void pger_comment(const char *comment) {
+    printf("asdasd: %s\n", comment);
+}
 
 int main( int argc, char **argv )
 {
-    pANTLR3_INPUT_STREAM           input;
-    pGerberLexer               	   lex;
-    pANTLR3_COMMON_TOKEN_STREAM    tokens;
-    pGerberParser              	   parser;
- 
-    input  = antlr3FileStreamNew          ((pANTLR3_UINT8)argv[1], ANTLR3_ENC_8BIT);
-    lex    = GerberLexerNew                (input);
-    tokens = antlr3CommonTokenStreamSourceNew  (ANTLR3_SIZE_HINT, TOKENSOURCE(lex));
-    parser = GerberParserNew               (tokens);
- 
-    parser  ->gerber(parser);
- 
-    // Must manually clean up
-    //
-    parser ->free(parser);
-    tokens ->free(tokens);
-    lex    ->free(lex);
-    input  ->close(input);
+    if(argc > 1) {
+        FILE *f;
+        size_t len;
+        char *buffer;
 
+        f = fopen(argv[1], "r");
+        if(f != NULL) {
+            fseek(f, 0, SEEK_END);
+            len = (unsigned long)ftell(f);
+            fseek(f, 0, SEEK_SET);
+            buffer = malloc(len);
+            if(fread(buffer, len, 1, f) > 0) {
+                pger_parse_buffer(buffer, len);
+            }
+        }
+    }
     return 0;
 }
